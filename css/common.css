@@ -33,12 +33,20 @@ hr,
 body {
   font: 2rem 'Pretendard', sans-serif;
 }
-
+.inner {
+  width: 140rem;
+  margin: 0 auto;
+  background: rgba(255, 255, 0, 0.3);
+}
+.inner-wide {
+  width: 160rem;
+}
 #header {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 10;
 }
 
 #header nav {
@@ -81,33 +89,4 @@ body {
   width: 2.5rem;
   height: 2.5rem;
   background: #f00 url(../img/icon-menu.svg) no-repeat 0 0 / contain;
-}
-
-/* 부모에게 가로 크기가 있으므로 자식에게 h100%을 주면 알맞게 들어간다. */
-.visual {
-  height: 108rem;
-  background: skyblue;
-}
-
-.video {
-  height: 100%;
-  border: 10px solid #000;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%; /* 부모의 100퍼센트가 아닌 자기 기준의 100퍼센트 왜냐 앱솔루트를 줬기 때문에
-   */
-}
-
-.visual .inner {
-  position: relative;
-}
-
-.visual-con {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  background: #55f;
 }
