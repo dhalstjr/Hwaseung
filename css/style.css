@@ -308,14 +308,20 @@
 }
 
 /* inner 크기와 같은 분기점 생성 */
-
+@media (max-width: 1600px) {
+  .inner,
+  .inner-wide {
+    width: 924px;
+    width: 95.2344%;
+  }
+}
 /* 태블릿 디자인 */
 @media (max-width: 1024px) {
-  /*   .inner,
+  .inner,
   .inner-wide {
     width: 924px;
     width: 90.2344%;
-  } */
+  }
 
   .business-list li a {
     font-size: 1.8rem;
@@ -355,7 +361,7 @@
     font-size: 1.6rem;
   }
 
-  .foot-site {
+  .family-site {
     width: 24rem;
     height: 3rem;
     font-size: 1.4rem;
@@ -365,8 +371,44 @@
   }
 }
 
+/* 문제가 되는 해상도 */
+@media (max-width: 1000px) {
+  .business-list {
+    flex-wrap: wrap;
+  }
+  .business-list li {
+    flex: 1 1 30%;
+  }
+
+  .foot-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 5rem;
+  }
+  .foot-family {
+    align-items: center;
+  }
+
+  .family-site {
+    margin-top: 4rem;
+  }
+  /* 플렉스 안에 자식의 순서를 바꿔주기 위해서. */
+  .sns-list {
+    order: -1; /* od-1 */
+    margin-top: 0;
+  }
+
+  .policy-list {
+    margin-top: 2.2rem;
+  }
+
+  .foot-copyright {
+    margin-top: 3.8rem;
+  }
+}
+
 /* 모바일 디자인 */
-@media (max-width: 390px) {
+@media (max-width: 700px) {
   .visual {
     height: 54rem;
   }
@@ -388,10 +430,6 @@
 
   .sec-title p {
     font-size: 2.2rem;
-  }
-
-  .business-list {
-    flex-wrap: wrap;
   }
 
   .business-list li {
@@ -467,22 +505,10 @@
     height: 3.5rem;
     margin-top: 2rem;
   }
-  .foot-family {
-    align-items: center;
-  }
+}
 
-  /* 플렉스 안에 자식의 순서를 바꿔주기 위해서. */
-  .sns-list {
-    order: -1; /* od-1 */
-    margin-top: 0;
-  }
-
-  .policy-list {
-    margin-top: 2.2rem;
-  }
-
-  .foot-copyright {
-    margin-top: 3.8rem;
-    font-size: 1.2rem;
+@media (max-width: 500px) {
+  :root {
+    font-size: 62.5%;
   }
 }

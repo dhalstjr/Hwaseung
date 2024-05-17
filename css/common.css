@@ -108,8 +108,23 @@ body {
   } */
 }
 
+/* 문제가 되는 해상도 */
+@media (max-width: 1000px) {
+  #header nav {
+    justify-content: space-between;
+  }
+
+  .gnb {
+    display: none;
+  }
+}
+
 /* 모바일 디자인 */
-@media (max-width: 390px) {
+@media (max-width: 700px) {
+  :root {
+    font-size: 90%;
+  }
+
   .inner,
   .inner-wide {
     /* width: 350px; */
@@ -118,11 +133,6 @@ body {
 
   #header nav {
     height: 5.7rem;
-    justify-content: space-between;
-  }
-
-  .gnb {
-    display: none;
   }
 
   .logo a {
@@ -138,5 +148,11 @@ body {
   .btn-menu {
     width: 1.7rem;
     height: 1.7rem;
+  }
+}
+
+@media (max-width: 500px) {
+  :root {
+    font-size: 62.5%;
   }
 }
