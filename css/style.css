@@ -246,11 +246,41 @@
   margin-top: 7rem;
 }
 .pr-list li {
-  border: 1px solid #000;
+  /*   border: 1px solid #000; */
   height: 50.2rem;
 
   /* 늘어날 수도 있고 줄어들 수도 있고 몇개를 배치할 것인가. */
   flex: 1 1 30%;
+
+  background: no-repeat 0 0 / cover;
+  position: relative;
+}
+
+.pr-list li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.pr-list li:hover::before {
+  opacity: 1;
+}
+
+.pr-list li:nth-child(1) {
+  background-image: url(../img/pr-pic1.png);
+}
+.pr-list li:nth-child(2) {
+  background-image: url(../img/pr-pic2.png);
+}
+.pr-list li:nth-child(3) {
+  background-image: url(../img/pr-pic3.png);
 }
 
 .pr-list li a {
@@ -261,6 +291,8 @@
   font-weight: 700;
   font-size: 2.6rem;
   color: #fff;
+
+  position: relative;
 }
 
 .management {
@@ -278,7 +310,7 @@
 }
 
 .heritage-con {
-  background: #5f5;
+  /*   background: #5f5; */
 
   display: flex;
   flex-direction: column;
@@ -326,17 +358,14 @@
 
 #footer {
   padding: 11.6rem 0 13.3rem;
-  background: #55f url(https://www.hwaseunggroup.com/kor/assets/img/common/footer_bg_.png) no-repeat 0 0 / cover fixed;
+  background: /* #55f */ url(https://www.hwaseunggroup.com/kor/assets/img/common/footer_bg_.png) no-repeat 0 0 / cover
+    fixed;
 }
 
 .foot-links {
   border: 1px solid #f00;
   display: flex;
   justify-content: space-between;
-}
-
-.foot-menu {
-  background: #5f5;
 }
 
 .foot-menu ul {
@@ -365,7 +394,7 @@
 }
 
 .foot-family {
-  background: #55f;
+  /*   background: #55f; */
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -431,7 +460,7 @@
   display: block;
   width: 3.6rem;
   height: 3.6rem;
-  background: #f00 no-repeat 50%;
+  background:/*  #f00  */ no-repeat 50%;
 }
 .sns-list > a.instagram {
   background-image: url(../img/ico-instagram.svg);
