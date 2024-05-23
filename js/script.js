@@ -8,6 +8,23 @@ $(function () {
   const $btnMenu = $('.btn-menu');
   const duration = 300;
 
+  // 모바일
+  const $btnMmenu = $('.btn-m-menu');
+  const $mSubmenu = $('.m-submenu-wrap');
+  const $mGnb = $('.m-gnb');
+  const $dim = $('.dim');
+  const $btnClose = $('.btn-close');
+
+  $btnMmenu.on('click', function () {
+    $dim.fadeIn(duration);
+    $mSubmenu.addClass('active');
+  });
+
+  $btnClose.on('click', function () {
+    $dim.fadeOut(duration);
+    $mSubmenu.removeClass('active');
+  });
+
   // 마우스가 메뉴에 들어오면(mouseenter)
   $menu.on('mouseenter', function () {
     const menuIdx = $(this).index();
