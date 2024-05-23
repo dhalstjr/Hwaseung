@@ -43,11 +43,29 @@ body {
   width: 160rem;
 }
 #header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 10;
+}
+
+#header::before {
+  content: '';
+  position: absolute;
+  top: 9.5rem;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #b3b3b3;
+  z-index: 1;
+
+  opacity: 0;
+  transition: 0.3s;
+}
+
+#header.active::before {
+  opacity: 1;
 }
 
 #header::after {
@@ -59,9 +77,23 @@ body {
   width: 100%;
   height: 400px;
   transform: translateY(-100%);
+  transition: 0.4s;
 }
+
 #header.active::after {
   transform: translateY(0%);
+}
+
+#header.active .logo a {
+  background-image: url(../img/logo_blue_01.png);
+}
+
+#header.active .gnb li a {
+  color: #000;
+}
+
+#header.active .btn-menu {
+  background-image: url(../img/ico-menu-b.svg);
 }
 
 #header nav > * {
@@ -85,8 +117,13 @@ body {
 .submenu-wrap ul li dl dt {
   font-weight: 600;
   font-size: 2.2rem;
+  color: var(--title-color);
+}
+
+.submenu-wrap ul li.on dl dt {
   color: var(--main-color);
 }
+
 .submenu-wrap ul li dl dd {
   font-size: 1.8rem;
   line-height: 1.78;
@@ -179,7 +216,7 @@ body {
   transform: translateX(-50%);
 
   width: 0;
-  height: 2px;
+  height: 3px;
   transition: 0.3s;
   background: var(--main-color);
 }

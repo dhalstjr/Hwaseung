@@ -11,6 +11,7 @@ $(function () {
   $menu.on('mouseenter', function () {
     const menuIdx = $(this).index();
     $menu.removeClass('on').eq(menuIdx).addClass('on');
+    $submenu.find('li').removeClass('on').eq(menuIdx).addClass('on');
     console.log(menuIdx);
 
     openMenu();
@@ -19,7 +20,13 @@ $(function () {
   // 마우스가 메뉴에 나가면(mouseleave)
   $header.on('mouseleave', function () {
     $menu.removeClass('on');
+    $submenu.find('li').removeClass('on');
     closeMenu();
+  });
+
+  // 메뉴 버튼을 눌렀을 때
+  $btnMenu.on('click', function () {
+    openMenu();
   });
 
   // 메뉴의 동작을 함수로 정의
