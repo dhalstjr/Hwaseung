@@ -52,12 +52,16 @@ body {
 
 #header::after {
   content: '';
-  background: #00f;
+  background: #fff;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 400px;
+  transform: translateY(-100%);
+}
+#header.active::after {
+  transform: translateY(0%);
 }
 
 #header nav > * {
@@ -69,6 +73,8 @@ body {
   top: 13.5rem;
   left: 15rem;
   z-index: 1;
+
+  display: none;
 }
 
 .submenu-wrap ul {
@@ -96,6 +102,8 @@ body {
 
   width: 41.3rem;
   height: 20.5rem;
+
+  display: none;
 }
 
 .submenu-wrap ul li dl dt + dd {
@@ -172,12 +180,11 @@ body {
 
   width: 0;
   height: 2px;
-  background: #f00;
   transition: 0.3s;
-  /*   background: var(--main-color); */
+  background: var(--main-color);
 }
 
-.gnb li a:hover b::after {
+.gnb li.on a b::after {
   width: 100%;
 }
 
