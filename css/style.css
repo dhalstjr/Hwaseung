@@ -72,6 +72,25 @@
   line-height: 1.2142;
   letter-spacing: -0.25px;
 }
+
+.visual-con h2 b {
+  /* border: 1px solid #ff0; */
+  position: relative;
+}
+
+.visual-con h2 b:after {
+  content: '';
+  display: block;
+  /* width: 100%; */
+  width: 1870%;
+  height: 1px;
+  background: #fff;
+
+  position: absolute;
+  bottom: 12px;
+  left: 16px;
+}
+
 .visual-con a {
   font-weight: 600;
   font-size: 1.8rem;
