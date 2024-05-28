@@ -404,15 +404,47 @@ body {
   .inner-wide {
     width: 90.2344%;
   }
+
+  .submenu-wrap {
+    left: 9.375%;
+  }
+
+  .banner-slide {
+    right: 9.375%;
+  }
+}
+
+@media (max-width: 1400px) {
+  .submenu-wrap {
+    left: 3%;
+  }
+
+  .banner-slide {
+    right: 3%;
+  }
+
+  .submenu-wrap ul li dl dt {
+    font-size: 1.8rem;
+  }
+  .submenu-wrap ul li dl dd {
+    font-size: 1.8rem;
+  }
 }
 
 /* 태블릿 디자인 */
-@media (max-width: 1024px) {
-  /*   .inner,
+@media (max-width: 1200px) {
+  .inner,
   .inner-wide {
-    width: 924px;
-    width: 90.2344%;
-  } */
+    width: 95%;
+  }
+
+  .submenu-wrap ul {
+    gap: 3rem;
+  }
+  .submenu-wrap,
+  .banner-slide {
+    display: none;
+  }
 }
 
 /* 문제가 되는 해상도 */

@@ -91,6 +91,12 @@ $(function () {
     }
   }
 
+  // $window.on('resize', function () {
+  //   $menu.removeClass('on');
+  //   $submenu, find('li').removeClass('active');
+  //   closeMenu();
+  // });
+
   // 스크롤 이벤트
   $window.on('scroll', function () {
     // 얼마나 스크롤 되었는지 값을 구해서 저장
