@@ -11,29 +11,27 @@ $(function () {
   // 모바일
   const $btnMmenu = $('.btn-m-menu');
   const $mSubmenu = $('.m-submenu-wrap');
-  const $mGnb = $('.m-gnb');
   const $dim = $('.dim');
   const $btnClose = $('.btn-close');
   const $mGnbMenu = $('.m-gnb > li');
-  const $mGnbSubmenu = $('.m-gnb-sub ');
+  const $mGnbSubmenu = $('.m-gnb-sub');
 
-  // 모바일용 메뉴를 클릭했을 때
+  // 모바일 용 메뉴를 클릭했을 때
   $mGnbMenu.on('click', function () {
     $(this).toggleClass('on');
     $(this).siblings().removeClass('on');
-
     $(this).find($mGnbSubmenu).stop().slideToggle(duration);
     $(this).siblings().find($mGnbSubmenu).stop().slideUp(duration);
   });
 
   $btnMmenu.on('click', function () {
-    $dim.fadeIn(duration);
     $mSubmenu.addClass('active');
+    $dim.fadeIn(duration);
   });
 
-  $btnClose.on('click', function () {
-    $dim.fadeOut(duration);
+  $btnClose.add($dim).on('click', function () {
     $mSubmenu.removeClass('active');
+    $dim.fadeOut(duration);
 
     // 모바일 용 서브메뉴 초기화
     $mGnbMenu.removeClass('on');
@@ -45,7 +43,6 @@ $(function () {
     const menuIdx = $(this).index();
     $menu.removeClass('on').eq(menuIdx).addClass('on');
     $submenu.find('li').removeClass('on').eq(menuIdx).addClass('on');
-    console.log(menuIdx);
 
     openMenu();
   });
@@ -57,10 +54,8 @@ $(function () {
     closeMenu();
   });
 
-  // 메뉴 버튼을 눌렀을 때
-  $btnMenu.on('click', function () {
-    openMenu();
-  });
+  // 메뉴 버튼을 클릭했을 때
+  $btnMenu.on('click', openMenu);
 
   // 메뉴의 동작을 함수로 정의
   function openMenu() {
@@ -75,15 +70,11 @@ $(function () {
     $banner.stop().fadeOut(duration);
   }
 
-  // 얼마나 스크롤 되었는지 값을 구해서 저장
   let scrollTop = $window.scrollTop();
-  // 비주얼 영역의 세로크기 저장
-  const visualHeight = $('.visual').outerHeight();
-
   setWhiteBackground();
 
   function setWhiteBackground() {
-    // 두 값을 비교해서(스크롤값이 비주얼 영역의 세로보다 크다면 = 비주얼 영역을 지난다.)
+    const visualHeight = $('.visual').outerHeight();
     if (scrollTop >= visualHeight) {
       $header.addClass('w-bg');
     } else {
@@ -91,11 +82,10 @@ $(function () {
     }
   }
 
-  // $window.on('resize', function () {
-  //   $menu.removeClass('on');
-  //   $submenu, find('li').removeClass('active');
-  //   closeMenu();
-  // });
+  $window.on('resize', function () {
+    setWhiteBackground();
+    setManagementHeight();
+  });
 
   // 스크롤 이벤트
   $window.on('scroll', function () {
@@ -112,7 +102,77 @@ $(function () {
   // family site
   $('.family-site select').on('change', function () {
     const linkValue = $(this).val();
-    console.log(linkValue);
     window.open(linkValue);
   });
+
+  // AOS.js
+  AOS.init({
+    duration: 600,
+    offset: 200,
+  });
+
+  // 지속가능경영 슬라이더
+  const managementList = new Swiper('.management-list', {
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false, // 버튼을 누를 시에 비활성된 오토플레이를 활성화.
+    },
+    slidesPerView: 1,
+    centeredSlides: true,
+
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+
+    navigation: {
+      nextEl: '.btn-next',
+      prevEl: '.btn-prev',
+    },
+
+    breakpoints: {
+      1024: {
+        slidesPerView: 4, // 가로 크기 675px을 위해 (2700 / 4)
+      },
+    },
+
+    on: {
+      autoplayTimeLeft(swiper, timeLeft, percentage) {
+        console.log(timeLeft, percentage);
+        // timeLeft: 남은 시간(ms)
+        // percentage: 진생상태를 1~0   사이의 값으로 표현.
+        const percentageValus = (1 - percentage) * 100 + '%';
+        document.querySelector('.progrees-bar').style.width = percentageValus;
+      },
+    },
+  });
+
+  const $btnPause = $('.btn-pause');
+  const $btnPlay = $('.btn-play');
+
+  $btnPlay.hide();
+
+  $btnPause.on('click', function () {
+    managementList.autoplay.stop();
+    $btnPause.hide();
+    $btnPlay.show();
+  });
+
+  $btnPlay.on('click', function () {
+    managementList.autoplay.start();
+    $btnPlay.hide();
+    $btnPause.show();
+  });
+
+  // 지속가능영역의 세로크기 결정
+  setManagementHeight();
+
+  function setManagementHeight() {
+    const titleHeight = $('.management .sec-title').outerHeight();
+    const sliderHeight = $('.management-list-wrap').outerHeight();
+    const managementHeight = titleHeight + sliderHeight;
+    $('.management').css({
+      height: `calc(${managementHeight}px + 12vw)`,
+    });
+  }
 });
